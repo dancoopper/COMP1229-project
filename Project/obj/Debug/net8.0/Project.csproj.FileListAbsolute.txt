@@ -1,0 +1,14 @@
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\bin\Debug\net8.0\Project.exe
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\bin\Debug\net8.0\Project.deps.json
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\bin\Debug\net8.0\Project.runtimeconfig.json
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\bin\Debug\net8.0\Project.dll
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\bin\Debug\net8.0\Project.pdb
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.AssemblyInfoInputs.cache
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.AssemblyInfo.cs
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.csproj.CoreCompileInputs.cache
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.dll
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\refint\Project.dll
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.pdb
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.genruntimeconfig.cache
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\ref\Project.dll
