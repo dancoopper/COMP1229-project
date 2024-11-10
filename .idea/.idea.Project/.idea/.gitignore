@@ -11,3 +11,6 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Other stuff
+Project/bin/Debug/net8.0
+Project/obj
