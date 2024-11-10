@@ -12,3 +12,4 @@ C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\re
 C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.pdb
 C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.genruntimeconfig.cache
 C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\ref\Project.dll
+C:\Programing-school\Sem3-4\COMP2129\project\Project\Project\obj\Debug\net8.0\Project.sourcelink.json
