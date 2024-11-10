@@ -248,8 +248,7 @@
             this.Name = name;
             this.selected = selected;
         }
-
-        // Explicit getter methods
+        
         public string GetName()
         {
             return this.Name;

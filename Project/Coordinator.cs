@@ -21,5 +21,15 @@ public class Coordinator
     {
         return customerManager.ShowCustomersAsString();
     }
+
+    public void AddFlights(int flightNumber, string origin, string destination, int maximumSeats, int numberOfSeats)
+    {
+        flightManager.RegisterFlight(flightNumber, origin, destination, maximumSeats, numberOfSeats);
+    }
+    
+    public void PrintFlights()
+    {
+        flightManager.PrintFlights();
+    }
 }
 
