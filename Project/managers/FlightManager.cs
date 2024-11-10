@@ -24,8 +24,8 @@ public class FlightManager
         Console.WriteLine("--------------Flight------------");
         for (int i = 0; i < numOfFlights; i++)
         {
-            Console.WriteLine("--------------------------");
             Console.WriteLine(flights[i].toString());
+            Console.WriteLine("--------------------------");
         }
     }
 }

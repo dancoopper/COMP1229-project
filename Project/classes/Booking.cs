@@ -3,14 +3,14 @@
 public class Booking
 {
     private int customerID;
-    private DateTime date;
+    private string date;
     private string flightNumber;
     private int bookingID = 0;
     
-    public Booking(int customerID, DateTime date, string flightNumber)
+    public Booking(int customerID, string flightNumber)
     {
         this.customerID = customerID;
-        this.date = date;
+        this.date = DateTime.Now.ToString(@"MM/dd/yyyy h:mm tt");;
         this.flightNumber = flightNumber;
         bookingID = bookingID++;
     }

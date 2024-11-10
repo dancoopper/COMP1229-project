@@ -87,7 +87,7 @@
                 // Handle different action for the option
                 if (keyinfo.Key == ConsoleKey.Enter)
                 {
-                    MenuOptions[menuIndex][index].Selected.Invoke();
+                    MenuOptions[menuIndex][index].GetSelected().Invoke();
 
                     //WriteMenu();
                     //index = 0;
@@ -232,20 +232,32 @@
                     Console.Write(" ");
                 }
 
-                Console.WriteLine(option.Name);
+                Console.WriteLine(option.GetName());
             }
         }
     }
 
     public class Option
     {
-        public string Name { get; }
-        public Action Selected { get; }
+        private string Name;
+        private Action selected;
 
+        // Constructor to initialize fields
         public Option(string name, Action selected)
         {
-            Name = name;
-            Selected = selected;
+            this.Name = name;
+            this.selected = selected;
+        }
+
+        // Explicit getter methods
+        public string GetName()
+        {
+            return this.Name;
+        }
+
+        public Action GetSelected()
+        {
+            return this.selected;
         }
     }
 }
