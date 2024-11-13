@@ -12,6 +12,12 @@ public class Coordinator
     {
         customerManager.AddCustomers(firstName, lastName, phone);
     }
+
+    public void DeleteCustomers(int customerId)
+    {
+        customerManager.DeleteCustomer(customerId);
+    }
+    
     public void ShowCustomers()
     {
         customerManager.ShowCustomers();

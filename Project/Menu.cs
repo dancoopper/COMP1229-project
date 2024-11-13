@@ -46,7 +46,7 @@
             // Set the default index of the selected item to be the first
 
             // Write the menu out
-            
+
             WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index]);
 
             // Store key info in here
@@ -134,9 +134,29 @@
                         WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index]);
                         break;
                     case "view":
-                        WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index],true, coordinator.ShowCustomersAsString());
+                        WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true,
+                            coordinator.ShowCustomersAsString());
+                        option = null;
                         break;
                     case "delete":
+                        int customerID;
+                        
+                        if (int.TryParse(GetValidInput($"{coordinator.ShowCustomersAsString()}\nwhat is the customer id (Enter 0 to go back): "), out customerID))
+                        {
+                            if (customerID <= 0)
+                            {
+                                WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index]);
+                                break;
+                            }
+                            coordinator.DeleteCustomers(customerID);
+                            WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, "Customer Deleted");
+                        }
+                        else
+                        {
+                            WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true,
+                                "Could not delete the customer");
+                        }
+
                         break;
                     case "back":
                         menuIndex = 0;
@@ -215,7 +235,12 @@
         static void WriteMenu(Option[] options, Option selectedOption, bool hasTitle = false, string titleText = null)
         {
             Console.Clear();
-
+            Console.WriteLine("ABC Airlines.");
+            if (hasTitle && titleText != null)
+            {
+                Console.WriteLine(titleText);
+            }
+           
 
             switch (menuIndex)
             {
@@ -235,11 +260,7 @@
                     Console.WriteLine("Something went wrong");
                     break;
             }
-            
-            if (hasTitle)
-            {
-                Console.WriteLine(titleText);
-            }
+
 
             foreach (Option option in options)
             {
@@ -254,6 +275,7 @@
 
                 Console.WriteLine(option.GetName());
             }
+
             Console.WriteLine("Up Arrow: Up\nDown Arrow: Down\nEnter: enter");
         }
     }
@@ -269,7 +291,7 @@
             this.Name = name;
             this.selected = selected;
         }
-        
+
         public string GetName()
         {
             return this.Name;

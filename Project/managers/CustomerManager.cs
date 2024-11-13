@@ -31,6 +31,20 @@ public class CustomerManager
         numOfCustomer++;
     }
 
+    public void DeleteCustomer(int customerID)
+    {
+        for (int i = 0; i < numOfCustomer; i++)
+        {
+            if (customerID == customers[i].GetID())
+            {
+                customers[i] = customers[numOfCustomer-1];
+                numOfCustomer--;
+            }
+        }
+    }
+    
+    
+    
     public void BookFlight(int ID)
     {
         for (int i = 0; i < numOfCustomer; i++)
@@ -57,6 +71,11 @@ public class CustomerManager
         string sCustomers = "";
         sCustomers+="------------Customer--------------\n";
 
+        if (numOfCustomer <= 0)
+        {
+            sCustomers+="No Customers Found";
+        }
+        
         for (int i = 0; i < numOfCustomer; i++)
         {
             sCustomers += customers[i].toString();
