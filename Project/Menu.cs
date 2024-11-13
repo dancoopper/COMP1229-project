@@ -46,7 +46,7 @@
             // Set the default index of the selected item to be the first
 
             // Write the menu out
-            Console.WriteLine("Main Menu");
+            
             WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index]);
 
             // Store key info in here
@@ -216,6 +216,26 @@
         {
             Console.Clear();
 
+
+            switch (menuIndex)
+            {
+                case 0:
+                    Console.WriteLine("----Main menu----");
+                    break;
+                case 1:
+                    Console.WriteLine("----Customer menu----");
+                    break;
+                case 2:
+                    Console.WriteLine("----Flight menu----");
+                    break;
+                case 3:
+                    Console.WriteLine("----Booking menu----");
+                    break;
+                default:
+                    Console.WriteLine("Something went wrong");
+                    break;
+            }
+            
             if (hasTitle)
             {
                 Console.WriteLine(titleText);
@@ -234,6 +254,7 @@
 
                 Console.WriteLine(option.GetName());
             }
+            Console.WriteLine("Up Arrow: Up\nDown Arrow: Down\nEnter: enter");
         }
     }
 
