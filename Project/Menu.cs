@@ -140,14 +140,18 @@
                         break;
                     case "delete":
                         int customerID;
-                        
-                        if (int.TryParse(GetValidInput($"{coordinator.ShowCustomersAsString()}\nwhat is the customer id (Enter 0 to go back): "), out customerID))
+
+                        if (int.TryParse(
+                                GetValidInput(
+                                    $"{coordinator.ShowCustomersAsString()}\nwhat is the customer id (Enter 0 to go back): "),
+                                out customerID))
                         {
                             if (customerID <= 0)
                             {
                                 WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index]);
                                 break;
                             }
+
                             coordinator.DeleteCustomers(customerID);
                             WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, "Customer Deleted");
                         }
@@ -240,7 +244,7 @@
             {
                 Console.WriteLine(titleText);
             }
-           
+
 
             switch (menuIndex)
             {
