@@ -7,18 +7,6 @@ public class CustomerManager
     Customer[] customers = new Customer[5];
     public int numOfCustomer = 0;
 
-    public void AddCustomer(Customer customer)
-    {
-        if (numOfCustomer >= 5)
-        {
-            Console.WriteLine("could not add more customers");
-            return;
-        }
-
-        customers[numOfCustomer] = customer;
-        numOfCustomer++;
-    }
-
     public void AddCustomers(string firstName, string lastName, string phone)
     {
         if (numOfCustomer >= 5)
