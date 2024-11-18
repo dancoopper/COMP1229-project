@@ -7,7 +7,7 @@ public class Coordinator
 {
     CustomerManager customerManager = new CustomerManager();
     FlightManager flightManager = new FlightManager();
-
+    BookingManager bookingManager = new BookingManager();
     public void AddCustomers(string firstName, string lastName, string phone)
     {
         customerManager.AddCustomers(firstName, lastName, phone);
@@ -17,25 +17,41 @@ public class Coordinator
     {
         customerManager.DeleteCustomer(customerId);
     }
-    
-    public void ShowCustomers()
+
+    public string ShowCustomers()
     {
-        customerManager.ShowCustomers();
+        return customerManager.ShowCustomers();
     }
 
-    public string ShowCustomersAsString()
+
+    public void MakeBooking(int customerId, string flightId)
     {
-        return customerManager.ShowCustomersAsString();
+        bookingManager.MakeBooking(customerId, flightId);
     }
 
-    public void AddFlights(int flightNumber, string origin, string destination, int maximumSeats, int numberOfSeats)
+    public string ShowBookings()
     {
-        flightManager.RegisterFlight(flightNumber, origin, destination, maximumSeats, numberOfSeats);
+        return bookingManager.PrintBookings();
     }
     
-    public void PrintFlights()
+    public void AddFlights(string origin, string destination, int numberOfSeats)
     {
-        flightManager.PrintFlights();
+        flightManager.RegisterFlight(origin, destination, numberOfSeats);
+    }
+
+    public void DeleteFlights(string flightId)
+    {
+        flightManager.DeleteFlight(flightId);
+    }
+    
+    public string PrintFlights()
+    {
+        return flightManager.PrintFlights();
+    }
+
+    public string PrintOneFlight(string flightId)
+    {
+        return flightManager.PrintOneFlight(flightId, bookingManager.FindBookings(flightId));
     }
 }
 

@@ -127,23 +127,23 @@
                 switch (option)
                 {
                     case "add":
-                        string firstName = GetValidInput("What is the first name: ");
-                        string lastName = GetValidInput("What is the last name: ");
-                        string phone = GetValidInput("What is the phone number: ");
+                        string firstName = GetValidInputString("What is the first name: ");
+                        string lastName = GetValidInputString("What is the last name: ");
+                        string phone = GetValidInputString("What is the phone number: ");
                         coordinator.AddCustomers(firstName, lastName, phone);
                         WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index]);
                         break;
                     case "view":
                         WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true,
-                            coordinator.ShowCustomersAsString());
+                            coordinator.ShowCustomers());
                         option = null;
                         break;
                     case "delete":
                         int customerID;
 
                         if (int.TryParse(
-                                GetValidInput(
-                                    $"{coordinator.ShowCustomersAsString()}\nwhat is the customer id (Enter 0 to go back): "),
+                                GetValidInputString(
+                                    $"{coordinator.ShowCustomers()}\nwhat is the customer id (Enter 0 to go back): "),
                                 out customerID))
                         {
                             if (customerID <= 0)
@@ -171,15 +171,32 @@
 
             if (menu.Equals("flight")) //flight menu
             {
+                string flightID = "";
                 switch (option)
                 {
                     case "add":
+                        string origin = GetValidInputString("What is the origin: ");
+                        string destination = GetValidInputString("What is the destination: ");
+                        int numberOfSeats =
+                            int.TryParse(GetValidInputString("What is the number of seats: "), out numberOfSeats)
+                                ? numberOfSeats
+                                : 0;
+
+                        coordinator.AddFlights(origin, destination, numberOfSeats);
+                        WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, "Flight Added");
                         break;
                     case "view":
+                        WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, coordinator.PrintFlights());
+                        option = null;
                         break;
                     case "view1":
+                        flightID = GetValidInputString($"{coordinator.PrintFlights()}\nWhat is the flight ID: ");
+                        WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, coordinator.PrintOneFlight(flightID));
+                        option = null;
                         break;
                     case "delete":
+                         flightID = GetValidInputString($"{coordinator.PrintFlights()}\nWhat is the flight ID: ");
+                         coordinator.DeleteFlights(flightID);
                         break;
                     case "back":
                         menuIndex = 0;
@@ -194,8 +211,15 @@
                 switch (option)
                 {
                     case "make":
+                        int customerID =int.TryParse(GetValidInputString($"{coordinator.ShowCustomers()}\nEnter the customer ID: "), out customerID)?customerID:0;
+                        string flightID = GetValidInputString($"{coordinator.PrintFlights()}\nEnter the flight ID: ");
+                        coordinator.MakeBooking(customerID, flightID);
+                        WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index],true, "Booking made successfully");
+                        option = null; 
                         break;
                     case "view":
+                        WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index],true, coordinator.ShowBookings());
+                        option = null;
                         break;
                     case "back":
                         menuIndex = 0;
@@ -205,7 +229,49 @@
             }
         }
 
-        static string GetValidInput(string prompt)
+        static int GetValidInputInt(string prompt)
+        {
+            int input;
+            string userInput;
+            Console.Clear();
+            while (true)
+            {
+                Console.Write(prompt);
+                userInput = Console.ReadLine();
+
+                // Check for null or empty strings
+                if (string.IsNullOrEmpty(userInput))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Input cannot be empty. Please try again.");
+                    continue;
+                }
+
+                // Check for overly long strings
+                if (userInput.Length > 100) // Adjust the length limit as needed
+                {
+                    Console.Clear();
+                    Console.WriteLine("Input is too long. Please enter a shorter number.");
+                    continue;
+                }
+
+                // Try parsing the input to an integer
+                if (int.TryParse(userInput, out input))
+                {
+                    break;  // Valid integer input
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Invalid input. Please enter a valid integer.");
+                }
+            }
+
+            return input;
+        }
+
+        
+        static string GetValidInputString(string prompt)
         {
             string input;
             Console.Clear();

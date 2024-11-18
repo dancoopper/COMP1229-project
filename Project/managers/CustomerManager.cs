@@ -30,8 +30,19 @@ public class CustomerManager
             }
         }
     }
-    
-    
+
+    public string GetCustomerInfo(int customerID)
+    {
+        for (int i = 0; i < numOfCustomer; i++)
+        {
+            if (customerID == customers[i].GetID())
+            {
+                return customers[i].toString();
+            }
+        }
+        
+        return "could not get customer info";
+    }
     
     public void BookFlight(int ID)
     {
@@ -43,18 +54,9 @@ public class CustomerManager
             }
         }
     }
+    
 
-    public void ShowCustomers()
-    {
-        Console.WriteLine("------------Customer--------------");
-        for (var i = 0; i < numOfCustomer; i++)
-        {
-            Console.WriteLine(customers[i].toString());
-            Console.WriteLine("--------------------------");
-        }
-    }
-
-    public string ShowCustomersAsString()
+    public string ShowCustomers()
     {
         string sCustomers = "";
         sCustomers+="------------Customer--------------\n";

@@ -20,6 +20,7 @@ public class Customer
 
     public void BookFlight(int ID)
     {
+        
         this.numOfBookings = numOfBookings + 1;
     }
 

@@ -5,7 +5,7 @@ public class Booking
     private int customerID;
     private string date;
     private string flightNumber;
-    private int bookingID = 0;
+    private static int bookingID = 0;
     
     public Booking(int customerID, string flightNumber)
     {
@@ -15,8 +15,23 @@ public class Booking
         bookingID = bookingID++;
     }
 
+    public int GetCustomerID()
+    {
+        return this.customerID;
+    }
+
+    public string GetFlightNumber()
+    {
+        return this.flightNumber;
+    }
+
+    public int GetBookingID()
+    {
+        return bookingID;
+    }
+    
     public string toString()
     {
-        return $"Date: {this.date}\nFlight: {this.flightNumber}\nCustomer ID: {this.customerID}\nBooking ID: {bookingID}";
+        return $"Date: {this.date}\nFlight: {this.flightNumber}\nCustomer ID: {this.customerID}\nBooking ID: {bookingID}\n";
     }
 }
