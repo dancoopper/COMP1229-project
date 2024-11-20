@@ -28,7 +28,11 @@ public class Customer
     {
         return this.ID;
     }
-
+    public string TextInput()
+    {
+        return
+            $"{numOfBookings}|{this.ID}|{this.firstName}|{this.lastName}|{this.phone}\n";
+    }
    
     
     public string toString()

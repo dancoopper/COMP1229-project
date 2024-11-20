@@ -25,7 +25,7 @@ public class CustomerManager
         {
             if (customerID == customers[i].GetID())
             {
-                customers[i] = customers[numOfCustomer-1];
+                customers[i] = customers[numOfCustomer - 1];
                 numOfCustomer--;
             }
         }
@@ -40,10 +40,10 @@ public class CustomerManager
                 return customers[i].toString();
             }
         }
-        
+
         return "could not get customer info";
     }
-    
+
     public void BookFlight(int ID)
     {
         for (int i = 0; i < numOfCustomer; i++)
@@ -54,25 +54,35 @@ public class CustomerManager
             }
         }
     }
-    
+
+
+    public string TextInput()
+    {
+        string sCustomers = "";
+        for (int i = 0; i < numOfCustomer; i++)
+        {
+            sCustomers += customers[i].TextInput();
+        }
+
+        return sCustomers;
+    }
 
     public string ShowCustomers()
     {
         string sCustomers = "";
-        sCustomers+="------------Customer--------------\n";
+        sCustomers += "------------Customer--------------\n";
 
         if (numOfCustomer <= 0)
         {
-            sCustomers+="No Customers Found";
+            sCustomers += "No Customers Found";
         }
-        
+
         for (int i = 0; i < numOfCustomer; i++)
         {
             sCustomers += customers[i].toString();
-            sCustomers+= "--------------------------\n";
-
+            sCustomers += "--------------------------\n";
         }
-        
+
         return sCustomers;
     }
 }

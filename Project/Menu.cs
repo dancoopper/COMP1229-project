@@ -12,7 +12,7 @@
         public static int index;
 
         public static Coordinator coordinator = new Coordinator();
-
+        public FileUtil fileUtil = new FileUtil();
         public void Start()
         {
             // Create options that you want your menu to have
@@ -48,6 +48,7 @@
             // Write the menu out
 
             WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index]);
+            coordinator.AddCustomers(fileUtil.ReadCustomerFile()[2],fileUtil.ReadCustomerFile()[3],fileUtil.ReadCustomerFile()[4]);
 
             // Store key info in here
             ConsoleKeyInfo keyinfo;
@@ -348,8 +349,11 @@
 
             Console.WriteLine("Up Arrow: Up\nDown Arrow: Down\nEnter: enter");
         }
-    }
 
+        
+    }
+    
+    
     public class Option
     {
         private string Name;

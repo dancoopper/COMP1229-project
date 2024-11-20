@@ -8,14 +8,23 @@ public class Coordinator
     CustomerManager customerManager = new CustomerManager();
     FlightManager flightManager = new FlightManager();
     BookingManager bookingManager = new BookingManager();
+    FileUtil fileUtil = new FileUtil();
+    
+    public void EndProcess()
+    {
+        fileUtil.SaveState(customerManager, flightManager, bookingManager);
+    }
     public void AddCustomers(string firstName, string lastName, string phone)
     {
         customerManager.AddCustomers(firstName, lastName, phone);
+        fileUtil.WriteCustomerToFile(customerManager);
     }
 
     public void DeleteCustomers(int customerId)
     {
         customerManager.DeleteCustomer(customerId);
+        fileUtil.WriteCustomerToFile(customerManager);
+
     }
 
     public string ShowCustomers()
@@ -27,6 +36,7 @@ public class Coordinator
     public void MakeBooking(int customerId, string flightId)
     {
         bookingManager.MakeBooking(customerId, flightId);
+        fileUtil.WriteBookToFile(bookingManager);
     }
 
     public string ShowBookings()
@@ -37,11 +47,14 @@ public class Coordinator
     public void AddFlights(string origin, string destination, int numberOfSeats)
     {
         flightManager.RegisterFlight(origin, destination, numberOfSeats);
+        fileUtil.WriteFlightToFile(flightManager);
     }
 
     public void DeleteFlights(string flightId)
     {
         flightManager.DeleteFlight(flightId);
+        fileUtil.WriteFlightToFile(flightManager);
+
     }
     
     public string PrintFlights()
