@@ -6,15 +6,14 @@ public class BookingManager
 {
     private Booking[] bookings = new Booking[5];
     private int numOfBookings = 0;
-    CustomerManager customerManager = new CustomerManager();
 
-    public void MakeBooking(int customerID, string flightNumber)
+    public void MakeBooking(int customerID, int flightNumber)
     {
         bookings[numOfBookings] = new Booking(customerID, flightNumber);
         numOfBookings++;
     }
 
-    public void UpdateBooking(int customerID, string flightNumber)
+    public void UpdateBooking(int customerID, int flightNumber)
     {
         for (int i = 0; i < numOfBookings; i++)
         {
@@ -25,7 +24,7 @@ public class BookingManager
         }
     }
 
-    public void DeleteBooking(int customerID, string flightNumber)
+    public void DeleteBooking(int customerID, int flightNumber)
     {
         for (int i = 0; i < numOfBookings; i++)
         {
@@ -37,14 +36,14 @@ public class BookingManager
         }
     }
 
-    public string FindBookings(string flightNumber)
+    public string FindBookings(int flightNumber, CustomerManager customerManager)
     {
         string output = "";
         for (int i = 0; i < numOfBookings; i++)
         {
-            if (bookings[i].GetFlightNumber().Equals(flightNumber))
+            if (bookings[i].GetFlightNumber() == flightNumber)
             {
-               output+= customerManager.GetCustomerInfo(bookings[i].GetCustomerID());
+               output += customerManager.GetCustomerInfo(bookings[i].GetCustomerID());
             }
         }
         return output;

@@ -5,8 +5,8 @@ namespace Project;
 
 public class Coordinator
 {
-    CustomerManager customerManager = new CustomerManager();
-    FlightManager flightManager = new FlightManager();
+    CustomerManager customerManager = new CustomerManager(1000, 100);
+    FlightManager flightManager = new FlightManager(1000);
     BookingManager bookingManager = new BookingManager();
     FileUtil fileUtil = new FileUtil();
     
@@ -33,7 +33,7 @@ public class Coordinator
     }
 
 
-    public void MakeBooking(int customerId, string flightId)
+    public void MakeBooking(int customerId, int flightId)
     {
         bookingManager.MakeBooking(customerId, flightId);
         fileUtil.WriteBookToFile(bookingManager);
@@ -44,13 +44,13 @@ public class Coordinator
         return bookingManager.PrintBookings();
     }
     
-    public void AddFlights(string origin, string destination, int numberOfSeats)
+    public void AddFlights(int flightNum, string origin, string destination, int numberOfSeats)
     {
-        flightManager.RegisterFlight(origin, destination, numberOfSeats);
+        flightManager.AddFlight(flightNum, origin, destination, numberOfSeats);
         fileUtil.WriteFlightToFile(flightManager);
     }
 
-    public void DeleteFlights(string flightId)
+    public void DeleteFlights(int flightId)
     {
         flightManager.DeleteFlight(flightId);
         fileUtil.WriteFlightToFile(flightManager);
@@ -62,9 +62,9 @@ public class Coordinator
         return flightManager.PrintFlights();
     }
 
-    public string PrintOneFlight(string flightId)
+    public string PrintOneFlight(int flightId)
     {
-        return flightManager.PrintOneFlight(flightId, bookingManager.FindBookings(flightId));
+        return flightManager.PrintOneFlight(flightId, bookingManager.FindBookings(flightId, customerManager));
     }
 }
 

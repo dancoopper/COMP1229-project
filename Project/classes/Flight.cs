@@ -2,44 +2,27 @@
 
 public class Flight
 {
-    protected string flightID;//idk if the user sets this
+    protected int flightNum; // this is an integer
     private string origin;
     private string destination;
-    private int numberOfSeats;
-    private string status;
-    
-    private static int numOfFlights = 1;
-    private int seed = 2;
+    private int maxSeats;
+    private int passengerNum;
 
-    public Flight(string origin, string destination, int numberOfSeats)
+    public Flight(int flightNum, string origin, string destination, int maxSeats)
     {
-        this.flightID = "AB"+(numOfFlights+seed);
-        numOfFlights++;
+        this.flightNum = flightNum;
         this.origin = origin;
         this.destination = destination;
-        this.numberOfSeats = numberOfSeats;
-        this.status = "On Time";
+        this.maxSeats = maxSeats;
     }
 
-    public void UpdateFlight(string origin, string destination, int numberOfSeats)
+    public int GetFlightID()
     {
-        this.origin = origin;
-        this.destination = destination;
-        this.numberOfSeats = numberOfSeats;
-    }
-
-    public string GetStatus()
-    {
-        return this.status;
-    }
-
-    public string GetFlightID()
-    {
-        return this.flightID;
+        return this.flightNum;
     }
 
     public string toString()
     {
-        return $"Flight number: {flightID}\nOrigin: {origin}\nDestination: {destination}\nNumber of Seats: {numberOfSeats}\nStatus: {status}\n";
+        return $"Flight number: {flightNum}\nOrigin: {origin}\nDestination: {destination}\nNumber of Seats: {maxSeats}\n";
     }
 }

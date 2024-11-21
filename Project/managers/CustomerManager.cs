@@ -4,19 +4,29 @@ namespace Project.managers;
 
 public class CustomerManager
 {
-    Customer[] customers = new Customer[5];
-    public int numOfCustomer = 0;
+    private Customer[] customers;
+    private int numOfCustomer;
+    private int maxCustomers;
+    private static int seed;
+    public CustomerManager(int maxCustomers, int seed)
+    {
+        numOfCustomer = 0;
+        this.maxCustomers = maxCustomers;
+        CustomerManager.seed = seed;
+        customers = new Customer[maxCustomers];
+    }
 
+    // do not add a customer if one already exists with the same first name, last name and phone number
+    // implement this logic in the menu
+    // if a customer is added return true and display a success message on the menu
+    // otherwise return false and dipsplay error message on menu
     public void AddCustomers(string firstName, string lastName, string phone)
     {
-        if (numOfCustomer >= 5)
+        if (numOfCustomer < maxCustomers)
         {
-            Console.WriteLine("could not add more customers");
-            return;
+            customers[numOfCustomer++] = new Customer(seed, firstName, lastName, phone);
+            seed++;
         }
-
-        customers[numOfCustomer] = new Customer(firstName, lastName, phone);
-        numOfCustomer++;
     }
 
     public void DeleteCustomer(int customerID)
@@ -41,21 +51,9 @@ public class CustomerManager
             }
         }
 
-        return "could not get customer info";
+        return "could not get customer info"; // customer with ID ____ cannot be found 
     }
-
-    public void BookFlight(int ID)
-    {
-        for (int i = 0; i < numOfCustomer; i++)
-        {
-            if (customers[i].GetID() == ID)
-            {
-                customers[i].BookFlight(ID);
-            }
-        }
-    }
-
-
+    
     public string TextInput()
     {
         string sCustomers = "";

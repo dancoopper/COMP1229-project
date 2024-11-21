@@ -172,7 +172,7 @@
 
             if (menu.Equals("flight")) //flight menu
             {
-                string flightID = "";
+                int flightID = 0;
                 switch (option)
                 {
                     case "add":
@@ -182,21 +182,23 @@
                             int.TryParse(GetValidInputString("What is the number of seats: "), out numberOfSeats)
                                 ? numberOfSeats
                                 : 0;
-
-                        coordinator.AddFlights(origin, destination, numberOfSeats);
+                        int flightNum = int.TryParse(GetValidInputString("What is the flight number: "), out flightNum)
+                            ? flightNum
+                            : 0;
+                        coordinator.AddFlights(flightNum, origin, destination, numberOfSeats);
                         WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, "Flight Added");
                         break;
                     case "view":
                         WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, coordinator.PrintFlights());
                         option = null;
                         break;
-                    case "view1":
-                        flightID = GetValidInputString($"{coordinator.PrintFlights()}\nWhat is the flight ID: ");
+                    case "view1"://fix this
+                        flightID = GetValidInputInt($"{coordinator.PrintFlights()}\nWhat is the flight ID: ");
                         WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, coordinator.PrintOneFlight(flightID));
                         option = null;
                         break;
-                    case "delete":
-                         flightID = GetValidInputString($"{coordinator.PrintFlights()}\nWhat is the flight ID: ");
+                    case "delete"://fix this
+                         flightID = GetValidInputInt($"{coordinator.PrintFlights()}\nWhat is the flight ID: ");
                          coordinator.DeleteFlights(flightID);
                         break;
                     case "back":
@@ -213,7 +215,7 @@
                 {
                     case "make":
                         int customerID =int.TryParse(GetValidInputString($"{coordinator.ShowCustomers()}\nEnter the customer ID: "), out customerID)?customerID:0;
-                        string flightID = GetValidInputString($"{coordinator.PrintFlights()}\nEnter the flight ID: ");
+                        int flightID = GetValidInputInt($"{coordinator.PrintFlights()}\nEnter the flight ID: ");
                         coordinator.MakeBooking(customerID, flightID);
                         WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index],true, "Booking made successfully");
                         option = null; 

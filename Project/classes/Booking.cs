@@ -4,10 +4,10 @@ public class Booking
 {
     private int customerID;
     private string date;
-    private string flightNumber;
+    private int flightNumber;
     private static int bookingID = 0;
     
-    public Booking(int customerID, string flightNumber)
+    public Booking(int customerID, int flightNumber)
     {
         this.customerID = customerID;
         this.date = DateTime.Now.ToString(@"MM/dd/yyyy h:mm tt");;
@@ -20,7 +20,7 @@ public class Booking
         return this.customerID;
     }
 
-    public string GetFlightNumber()
+    public int GetFlightNumber()
     {
         return this.flightNumber;
     }

@@ -26,6 +26,7 @@ public class FileUtil
 
     public string[] ReadCustomerFile()
     {
+        
         string[] s;
         StreamReader obj = new StreamReader(customerPath);
         s = obj.ReadToEnd().Split("|");

@@ -2,23 +2,30 @@
 
 public class Customer
 {
-    private static int nextID = 1;
     private int ID;
     private string firstName;
     private string lastName;
     private string phone;
     private int numOfBookings = 0;
 
-    public Customer(string firstName, string lastName, string phone)
+    public Customer(int id, string firstName, string lastName, string phone)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
-        this.ID = nextID;
-        nextID++;
+        this.ID = id;
     }
 
-    public void BookFlight(int ID)
+    public Customer(int NumofBook, int id, string firstName, string lastName, string phone)
+    {
+        this.numOfBookings = numOfBookings;
+        this.ID = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+    }
+
+    public void BookFlight()
     {
         
         this.numOfBookings = numOfBookings + 1;
