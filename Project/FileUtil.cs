@@ -4,9 +4,9 @@ namespace Project;
 
 public class FileUtil
 {
-    private string customerPath = "../../../TextFiles/CM.txt";
-    private string flightPath = "../../../TextFiles/FM.txt";
-    private string bookingPath = "../../../TextFiles/BM.txt";
+    private static string customerPath = "../../../TextFiles/CM.txt";
+    private static string flightPath = "../../../TextFiles/FM.txt";
+    private static string bookingPath = "../../../TextFiles/BM.txt";
 
   
     public bool WriteCustomerToFile(CustomerManager cm)
@@ -18,20 +18,36 @@ public class FileUtil
         }
 
         StreamWriter obj = new StreamWriter(customerPath);
+        obj.WriteLine(cm.GetSeed());
+        obj.WriteLine(cm.GetMaxCustomers());
+        obj.WriteLine(cm.GetNumOfCustomers());
         obj.WriteLine(cm.TextInput());
         obj.Close();
         
         return true;
     }
 
-    public string[] ReadCustomerFile()
+    public CustomerManager ReadCustomerFile()
     {
-        
-        string[] s;
-        StreamReader obj = new StreamReader(customerPath);
-        s = obj.ReadToEnd().Split("|");
-        obj.Close();
-        return s;
+        if (File.Exists(customerPath))
+        {
+            
+            StreamReader reader = new StreamReader(customerPath);
+            int maxCustomers = Convert.ToInt32(reader.ReadLine());
+            int seed = Convert.ToInt32(reader.ReadLine());
+            int numOfCustomers = Convert.ToInt32(reader.ReadLine());
+            CustomerManager cm = new CustomerManager(maxCustomers, seed);
+            for(int i=0;i<numOfCustomers;i++)
+            {
+                string[] customer = reader.ReadLine().Split('|');
+                int numOfBookings = Convert.ToInt32(customer[0]);
+                int id = Convert.ToInt32(customer[1]);
+                cm.AddCustomers(numOfBookings,id,customer[2], customer[3], customer[4]);
+            }
+            reader.Close();
+            return cm;
+        }
+        return new CustomerManager(1000,100);
     }
 
     public bool WriteFlightToFile(FlightManager fm)

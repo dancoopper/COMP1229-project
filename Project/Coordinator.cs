@@ -5,10 +5,10 @@ namespace Project;
 
 public class Coordinator
 {
-    CustomerManager customerManager = new CustomerManager(1000, 100);
+    private static FileUtil fileUtil = new FileUtil();
+    CustomerManager customerManager = fileUtil.ReadCustomerFile();
     FlightManager flightManager = new FlightManager(1000);
     BookingManager bookingManager = new BookingManager();
-    FileUtil fileUtil = new FileUtil();
     
     public void EndProcess()
     {

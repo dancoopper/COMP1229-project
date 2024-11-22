@@ -48,7 +48,7 @@
             // Write the menu out
 
             WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index]);
-            coordinator.AddCustomers(fileUtil.ReadCustomerFile()[2],fileUtil.ReadCustomerFile()[3],fileUtil.ReadCustomerFile()[4]);
+            
 
             // Store key info in here
             ConsoleKeyInfo keyinfo;
@@ -305,13 +305,25 @@
             return input;
         }
 
-        static void WriteMenu(Option[] options, Option selectedOption, bool hasTitle = false, string titleText = null)
+
+        static void DrawScreen(string titleText = null)
         {
             Console.Clear();
+            Console.WriteLine(titleText);
+            
+        }
+        
+        static void WriteMenu(Option[] options, Option selectedOption, bool hasTitle = false, string titleText = null)
+        {
+            
+            Console.Clear();
+
+
             Console.WriteLine("ABC Airlines.");
             if (hasTitle && titleText != null)
             {
                 Console.WriteLine(titleText);
+                
             }
 
 
@@ -349,7 +361,9 @@
                 Console.WriteLine(option.GetName());
             }
 
-            Console.WriteLine("Up Arrow: Up\nDown Arrow: Down\nEnter: enter");
+            Console.WriteLine("Up Arrow: Up\nDown Arrow: Down\nEnter: enter\n\n");
+            
+            
         }
 
         

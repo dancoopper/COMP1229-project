@@ -16,7 +16,7 @@ public class Flight
         this.maxSeats = maxSeats;
     }
 
-    public int GetFlightID()
+    public int GetFlightNum()
     {
         return this.flightNum;
     }

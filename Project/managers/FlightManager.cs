@@ -21,6 +21,13 @@ public class FlightManager
     // flight number is not automatically assigned
     public void AddFlight(int flightNum, string origin, string destination, int numberOfSeats)
     {
+        for(int i=0;i<flights.Length;i++)
+        {
+            if (flights[i].GetFlightNum().Equals(flightNum))
+            {
+                return;
+            }
+        }
         flights[numOfFlights] = new Flight(flightNum, origin, destination, numberOfSeats);
         numOfFlights++;
     }
@@ -33,7 +40,7 @@ public class FlightManager
     {
         for (int i = 0; i < flights.Length; i++)
         {
-            if (flights[i].GetFlightID().Equals(flightNumber))
+            if (flights[i].GetFlightNum().Equals(flightNumber))
             {
                 flights[i] = flights[numOfFlights-1];
                 numOfFlights--;
@@ -47,7 +54,7 @@ public class FlightManager
         string output = "Customers on flight: " + flightNumber + "\n";
         for (int i = 0; i < flights.Length; i++)
         {
-            if (flights[i].GetFlightID().Equals(flightNumber))
+            if (flights[i].GetFlightNum().Equals(flightNumber))
             {
                 return output += customers;
             }

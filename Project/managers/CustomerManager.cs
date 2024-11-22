@@ -8,6 +8,7 @@ public class CustomerManager
     private int numOfCustomer;
     private int maxCustomers;
     private static int seed;
+
     public CustomerManager(int maxCustomers, int seed)
     {
         numOfCustomer = 0;
@@ -16,12 +17,27 @@ public class CustomerManager
         customers = new Customer[maxCustomers];
     }
 
-    // do not add a customer if one already exists with the same first name, last name and phone number
-    // implement this logic in the menu
-    // if a customer is added return true and display a success message on the menu
-    // otherwise return false and dipsplay error message on menu
+
+    public void AddCustomers(int NumofBook, int id, string firstName, string lastName, string phone)
+    {
+        if (numOfCustomer < maxCustomers)
+        {
+            customers[numOfCustomer++] = new Customer(NumofBook, id, firstName, lastName, phone);
+        }
+    }
+    
     public void AddCustomers(string firstName, string lastName, string phone)
     {
+        for (int i = 0; i < numOfCustomer; i++)
+        {
+            if (customers[i].GetFirstName().Equals(firstName) && customers[i].GetLastName().Equals(lastName) &&
+                customers[i].GetPhone().Equals(phone))
+            {
+                return;
+            }
+        }
+
+
         if (numOfCustomer < maxCustomers)
         {
             customers[numOfCustomer++] = new Customer(seed, firstName, lastName, phone);
@@ -41,6 +57,20 @@ public class CustomerManager
         }
     }
 
+    public int GetSeed()
+    {
+        return seed;
+    }
+
+    public int GetMaxCustomers()
+    {
+        return maxCustomers;
+    }
+
+    public int GetNumOfCustomers()
+    {
+        return numOfCustomer;
+    }
     public string GetCustomerInfo(int customerID)
     {
         for (int i = 0; i < numOfCustomer; i++)
@@ -53,7 +83,7 @@ public class CustomerManager
 
         return "could not get customer info"; // customer with ID ____ cannot be found 
     }
-    
+
     public string TextInput()
     {
         string sCustomers = "";

@@ -24,7 +24,22 @@ public class Customer
         this.lastName = lastName;
         this.phone = phone;
     }
-
+    
+    
+    public string GetFirstName()
+    {
+        return this.firstName;
+    }
+    
+    public string GetLastName()
+    {
+        return this.lastName;
+    }
+    
+    public string GetPhone()
+    {
+        return this.phone;
+    }
     public void BookFlight()
     {
         
