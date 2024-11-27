@@ -10,29 +10,33 @@ public class FlightManager
 
     public FlightManager(int maxFlights)
     {
-        numOfFlights = 0;
+        this.numOfFlights = 0;
         this.maxFlights = maxFlights;
-        flights = new Flight[maxFlights];
+        this.flights = new Flight[maxFlights];
     }
 
 
     // do not add a flight with a flight number that already exists
     // user needs to enter in a flight number
     // flight number is not automatically assigned
-    public void AddFlight(int flightNum, string origin, string destination, int numberOfSeats)
+    public bool AddFlight(int flightNum, string origin, string destination, int numberOfSeats)
     {
-        for (int i = 0; i < flights.Length; i++)
+        for (int i = 0; i < numOfFlights; i++)
         {
-            if (flights[i].GetFlightNum().Equals(flightNum))
+            if (flights[i] != null && GetFlightNumber(i) == flightNum)
             {
-                return;
+                return false;
             }
         }
         flights[numOfFlights] = new Flight(flightNum, origin, destination, numberOfSeats);
         numOfFlights++;
+        return true;
     }
 
-
+    public int GetFlightNumber(int index)
+    {
+        return flights[index].GetFlightNum();
+    }
 
 
     // can only be done if there are no customers booked

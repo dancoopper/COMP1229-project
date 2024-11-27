@@ -42,6 +42,7 @@ public class FileUtil
             for (int customerIndex = 0; customerIndex < numOfCustomers; customerIndex++)
             {
                 string[] customer = reader.ReadLine().Split('|');
+                Console.WriteLine();
                 int numOfBookings = Convert.ToInt32(customer[0]);
                 int id = Convert.ToInt32(customer[1]);
                 cm.AddCustomers(numOfBookings, id, customer[2], customer[3], customer[4]);

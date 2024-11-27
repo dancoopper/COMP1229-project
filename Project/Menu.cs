@@ -178,15 +178,16 @@
                     case "add":
                         string origin = GetValidInputString("What is the origin: ");
                         string destination = GetValidInputString("What is the destination: ");
-                        int numberOfSeats =
-                            int.TryParse(GetValidInputString("What is the number of seats: "), out numberOfSeats)
-                                ? numberOfSeats
-                                : 0;
-                        int flightNum = int.TryParse(GetValidInputString("What is the flight number: "), out flightNum)
-                            ? flightNum
-                            : 0;
-                        coordinator.AddFlights(flightNum, origin, destination, numberOfSeats);
-                        WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, "Flight Added");
+                        int numberOfSeats = GetValidInputInt("What is the number of seats: ");
+                        int flightNum = GetValidInputInt("What is the flight number: ");
+                        if (coordinator.AddFlights(flightNum, origin, destination, numberOfSeats))
+                        {
+                            WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, "Flight Added");
+                        }
+                        else
+                        {
+                            WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, "Flight not added (can't have duplicate flight numbers)");
+                        }
                         break;
                     case "view":
                         WriteMenu(MenuOptions[menuIndex], MenuOptions[menuIndex][index], true, coordinator.PrintFlights());
