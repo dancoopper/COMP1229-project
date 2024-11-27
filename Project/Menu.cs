@@ -20,7 +20,7 @@
             options1[0] = new Option("Customer", () => SelectMenuOption("main", "customer"));
             options1[1] = new Option("Flights", () => SelectMenuOption("main", "flights"));
             options1[2] = new Option("Bookings", () => SelectMenuOption("main", "bookings"));
-            options1[3] = new Option("Exit", () => Environment.Exit(0));
+            options1[3] = new Option("Exit", () => coordinator.EndProcess());
 
             options2 = new Option[4];
             options2[0] = new Option("Add Customer", () => SelectMenuOption("customer", "add"));

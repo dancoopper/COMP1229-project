@@ -1,4 +1,5 @@
-﻿using Project.classes;
+﻿using System.Globalization;
+using Project.classes;
 using Project.managers;
 
 namespace Project;
@@ -13,6 +14,7 @@ public class Coordinator
     public void EndProcess()
     {
         fileUtil.SaveState(customerManager, flightManager, bookingManager);
+        Environment.Exit(0);
     }
     public void AddCustomers(string firstName, string lastName, string phone)
     {
