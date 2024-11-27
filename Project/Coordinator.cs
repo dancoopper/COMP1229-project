@@ -7,25 +7,24 @@ namespace Project;
 public class Coordinator
 {
     private static FileUtil fileUtil = new FileUtil();
-    CustomerManager customerManager = fileUtil.ReadCustomerFile();
-    FlightManager flightManager = new FlightManager(1000);
-    BookingManager bookingManager = new BookingManager();
-    
+    CustomerManager customerManager = fileUtil.LoadCustomerFile();
+    FlightManager flightManager = fileUtil.LoadFlightFile();
+    BookingManager bookingManager = fileUtil.LoadBookingFile();
+
     public void EndProcess()
     {
         fileUtil.SaveState(customerManager, flightManager, bookingManager);
-        Environment.Exit(0);
     }
     public void AddCustomers(string firstName, string lastName, string phone)
     {
         customerManager.AddCustomers(firstName, lastName, phone);
-        fileUtil.WriteCustomerToFile(customerManager);
+        fileUtil.SaveCustomerFile(customerManager);
     }
 
     public void DeleteCustomers(int customerId)
     {
         customerManager.DeleteCustomer(customerId);
-        fileUtil.WriteCustomerToFile(customerManager);
+        fileUtil.SaveCustomerFile(customerManager);
 
     }
 
@@ -38,27 +37,27 @@ public class Coordinator
     public void MakeBooking(int customerId, int flightId)
     {
         bookingManager.MakeBooking(customerId, flightId);
-        fileUtil.WriteBookToFile(bookingManager);
+        fileUtil.SaveBookingFile(bookingManager);
     }
 
     public string ShowBookings()
     {
         return bookingManager.PrintBookings();
     }
-    
+
     public void AddFlights(int flightNum, string origin, string destination, int numberOfSeats)
     {
         flightManager.AddFlight(flightNum, origin, destination, numberOfSeats);
-        fileUtil.WriteFlightToFile(flightManager);
+        fileUtil.SaveFlightFile(flightManager);
     }
 
     public void DeleteFlights(int flightId)
     {
         flightManager.DeleteFlight(flightId);
-        fileUtil.WriteFlightToFile(flightManager);
+        fileUtil.SaveFlightFile(flightManager);
 
     }
-    
+
     public string PrintFlights()
     {
         return flightManager.PrintFlights();
@@ -69,4 +68,3 @@ public class Coordinator
         return flightManager.PrintOneFlight(flightId, bookingManager.FindBookings(flightId, customerManager));
     }
 }
-

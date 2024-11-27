@@ -14,14 +14,14 @@ public class FlightManager
         this.maxFlights = maxFlights;
         flights = new Flight[maxFlights];
     }
-    
+
 
     // do not add a flight with a flight number that already exists
     // user needs to enter in a flight number
     // flight number is not automatically assigned
     public void AddFlight(int flightNum, string origin, string destination, int numberOfSeats)
     {
-        for(int i=0;i<flights.Length;i++)
+        for (int i = 0; i < flights.Length; i++)
         {
             if (flights[i].GetFlightNum().Equals(flightNum))
             {
@@ -32,9 +32,9 @@ public class FlightManager
         numOfFlights++;
     }
 
-   
-    
-    
+
+
+
     // can only be done if there are no customers booked
     public void DeleteFlight(int flightNumber)
     {
@@ -42,14 +42,14 @@ public class FlightManager
         {
             if (flights[i].GetFlightNum().Equals(flightNumber))
             {
-                flights[i] = flights[numOfFlights-1];
+                flights[i] = flights[numOfFlights - 1];
                 numOfFlights--;
             }
 
         }
     }
 
-    public string PrintOneFlight(int  flightNumber, string customers)
+    public string PrintOneFlight(int flightNumber, string customers)
     {
         string output = "Customers on flight: " + flightNumber + "\n";
         for (int i = 0; i < flights.Length; i++)
@@ -68,10 +68,22 @@ public class FlightManager
         output += "--------------Flight------------\n";
         for (int i = 0; i < numOfFlights; i++)
         {
-            output+= flights[i].toString();
+            output += flights[i].toString();
             output += "--------------------------\n";
         }
 
         return output;
     }
+
+    public int GetNumberOfFlights()
+    {
+        return numOfFlights;
+    }
+
+    public Flight[] GetFlights()
+    {
+        return flights;
+    }
+    
+    
 }

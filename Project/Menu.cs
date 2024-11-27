@@ -2,10 +2,10 @@
 {
     public class Menu
     {
-        public Option[] options1;
-        public Option[] options2;
-        public Option[] options3;
-        public Option[] options4;
+        public Option[] MainMenuOptions;
+        public Option[] CustomerManuOptions;
+        public Option[] FlightMenuOptions;
+        public Option[] BookingManuOptions;
 
         public static int menuIndex = 0;
         public static Option[][] MenuOptions;
@@ -16,32 +16,32 @@
         public void Start()
         {
             // Create options that you want your menu to have
-            options1 = new Option[4];
-            options1[0] = new Option("Customer", () => SelectMenuOption("main", "customer"));
-            options1[1] = new Option("Flights", () => SelectMenuOption("main", "flights"));
-            options1[2] = new Option("Bookings", () => SelectMenuOption("main", "bookings"));
-            options1[3] = new Option("Exit", () => coordinator.EndProcess());
+            MainMenuOptions = new Option[4];
+            MainMenuOptions[0] = new Option("Customer", () => SelectMenuOption("main", "customer"));
+            MainMenuOptions[1] = new Option("Flights", () => SelectMenuOption("main", "flights"));
+            MainMenuOptions[2] = new Option("Bookings", () => SelectMenuOption("main", "bookings"));
+            MainMenuOptions[3] = new Option("Exit", () => coordinator.EndProcess());
 
-            options2 = new Option[4];
-            options2[0] = new Option("Add Customer", () => SelectMenuOption("customer", "add"));
-            options2[1] = new Option("View Customer", () => SelectMenuOption("customer", "view"));
-            options2[2] = new Option("Delete Customer", () => SelectMenuOption("customer", "delete"));
-            options2[3] = new Option("Back", () => SelectMenuOption("customer", "back"));
+            CustomerManuOptions = new Option[4];
+            CustomerManuOptions[0] = new Option("Add Customer", () => SelectMenuOption("customer", "add"));
+            CustomerManuOptions[1] = new Option("View Customer", () => SelectMenuOption("customer", "view"));
+            CustomerManuOptions[2] = new Option("Delete Customer", () => SelectMenuOption("customer", "delete"));
+            CustomerManuOptions[3] = new Option("Back", () => SelectMenuOption("customer", "back"));
 
-            options3 = new Option[5];
-            options3[0] = new Option("Add Flight", () => SelectMenuOption("flight", "add"));
-            options3[1] = new Option("View Flights", () => SelectMenuOption("flight", "view"));
-            options3[2] = new Option("View One Flight", () => SelectMenuOption("flight", "view1"));
-            options3[3] = new Option("Delete Flight", () => SelectMenuOption("flight", "delete"));
-            options3[4] = new Option("Back", () => SelectMenuOption("flight", "back"));
+            FlightMenuOptions = new Option[5];
+            FlightMenuOptions[0] = new Option("Add Flight", () => SelectMenuOption("flight", "add"));
+            FlightMenuOptions[1] = new Option("View Flights", () => SelectMenuOption("flight", "view"));
+            FlightMenuOptions[2] = new Option("View One Flight", () => SelectMenuOption("flight", "view1"));
+            FlightMenuOptions[3] = new Option("Delete Flight", () => SelectMenuOption("flight", "delete"));
+            FlightMenuOptions[4] = new Option("Back", () => SelectMenuOption("flight", "back"));
 
 
-            options4 = new Option[3];
-            options4[0] = new Option("Make Booking", () => SelectMenuOption("booking", "make"));
-            options4[1] = new Option("View Bookings", () => SelectMenuOption("booking", "view"));
-            options4[2] = new Option("Back", () => SelectMenuOption("booking", "back"));
+            BookingManuOptions = new Option[3];
+            BookingManuOptions[0] = new Option("Make Booking", () => SelectMenuOption("booking", "make"));
+            BookingManuOptions[1] = new Option("View Bookings", () => SelectMenuOption("booking", "view"));
+            BookingManuOptions[2] = new Option("Back", () => SelectMenuOption("booking", "back"));
 
-            MenuOptions = new[] { options1, options2, options3, options4 };
+            MenuOptions = new[] { MainMenuOptions, CustomerManuOptions, FlightMenuOptions, BookingManuOptions };
 
             // Set the default index of the selected item to be the first
 

@@ -16,7 +16,7 @@ public class Customer
         this.ID = id;
     }
 
-    public Customer(int NumofBook, int id, string firstName, string lastName, string phone)
+    public Customer(int numOfBookings, int id, string firstName, string lastName, string phone)
     {
         this.numOfBookings = numOfBookings;
         this.ID = id;
@@ -24,25 +24,31 @@ public class Customer
         this.lastName = lastName;
         this.phone = phone;
     }
-    
-    
+
+
     public string GetFirstName()
     {
         return this.firstName;
     }
-    
+
     public string GetLastName()
     {
         return this.lastName;
     }
-    
+
     public string GetPhone()
     {
         return this.phone;
     }
+
+    public int GetNumOfBookings()
+    {
+        return this.numOfBookings;
+    }
+
     public void BookFlight()
     {
-        
+
         this.numOfBookings = numOfBookings + 1;
     }
 
@@ -55,8 +61,8 @@ public class Customer
         return
             $"{numOfBookings}|{this.ID}|{this.firstName}|{this.lastName}|{this.phone}\n";
     }
-   
-    
+
+
     public string toString()
     {
         return

@@ -18,14 +18,12 @@ public class CustomerManager
     }
 
 
-    public void AddCustomers(int NumofBook, int id, string firstName, string lastName, string phone)
+    public void AddCustomers(int numOfBookings, int id, string firstName, string lastName, string phone)
     {
-        if (numOfCustomer < maxCustomers)
-        {
-            customers[numOfCustomer++] = new Customer(NumofBook, id, firstName, lastName, phone);
-        }
+        customers[numOfCustomer++] = new Customer(numOfBookings, id, firstName, lastName, phone);
+
     }
-    
+
     public void AddCustomers(string firstName, string lastName, string phone)
     {
         for (int i = 0; i < numOfCustomer; i++)
@@ -57,7 +55,7 @@ public class CustomerManager
         }
     }
 
-    public int GetSeed()
+    public static int GetSeed()
     {
         return seed;
     }
@@ -112,5 +110,10 @@ public class CustomerManager
         }
 
         return sCustomers;
+    }
+
+    public Customer[] GetCustomers()
+    {
+        return customers;
     }
 }

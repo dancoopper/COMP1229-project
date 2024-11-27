@@ -5,14 +5,22 @@ public class Booking
     private int customerID;
     private string date;
     private int flightNumber;
-    private static int bookingID = 0;
-    
-    public Booking(int customerID, int flightNumber)
+    private int bookingID;
+
+    public Booking(int bookingID, int customerID, int flightNumber)
     {
+        this.bookingID = bookingID;
         this.customerID = customerID;
-        this.date = DateTime.Now.ToString(@"MM/dd/yyyy h:mm tt");;
+        this.date = DateTime.Now.ToString(@"MM/dd/yyyy h:mm tt"); ;
         this.flightNumber = flightNumber;
-        bookingID = bookingID++;
+    }
+
+    public Booking(int bookingID, int customerID, int flightNumber, string date)
+    {
+        this.bookingID = bookingID;
+        this.customerID = customerID;
+        this.flightNumber = flightNumber;
+        this.date = date;
     }
 
     public int GetCustomerID()
@@ -29,7 +37,12 @@ public class Booking
     {
         return bookingID;
     }
-    
+
+    public string GetDate()
+    {
+        return date;
+    }
+
     public string toString()
     {
         return $"Date: {this.date}\nFlight: {this.flightNumber}\nCustomer ID: {this.customerID}\nBooking ID: {bookingID}\n";

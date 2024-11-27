@@ -21,6 +21,21 @@ public class Flight
         return this.flightNum;
     }
 
+    public string GetOrigin()
+    {
+        return origin;
+    }
+
+    public string GetDestination()
+    {
+        return destination;
+    }
+
+    public int GetMaxSeats()
+    {
+        return maxSeats;
+    }
+
     public string toString()
     {
         return $"Flight number: {flightNum}\nOrigin: {origin}\nDestination: {destination}\nNumber of Seats: {maxSeats}\n";
